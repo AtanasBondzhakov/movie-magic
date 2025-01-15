@@ -6,7 +6,7 @@ const routes = Router();
 
 routes.use(homeController);
 
-app.all('*', (req, res) => {
+routes.all('*', (req, res) => {
     res.render('404');
 });
 
