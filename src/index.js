@@ -2,12 +2,15 @@ import express, { urlencoded } from 'express';
 import handlebars from 'express-handlebars';
 
 import routes from './routes.js';
-import homeController from './controllers/home-controller.js';
+import ratingHelper from './helpers/rating-helper.js';
 
 const app = express();
 
 app.engine('hbs', handlebars.engine({
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: {
+        ratingHelper
+    }
 }));
 app.set('view engine', 'hbs');
 app.set('views', './src/views');

@@ -10,7 +10,8 @@ const create = (movieData) => {
     const id = uuId();
     movies.push({
         id,
-        ...movieData
+        ...movieData,
+        rating: Number(movieData.rating)
     });
 
     return id;
