@@ -19,7 +19,7 @@ const getAll = (filter = {}) => {
 
     return Movie.find({});
 }
-const getOne = (movieId) => movies.find(m => m.id === movieId);
+const getOne = (movieId) => Movie.findById(movieId);
 
 const create = (movieData) => {
     const id = uuId();
