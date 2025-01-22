@@ -1,10 +1,21 @@
 import express, { urlencoded } from 'express';
 import handlebars from 'express-handlebars';
+import mongoose from 'mongoose';
 
 import routes from './routes.js';
 import ratingHelper from './helpers/rating-helper.js';
 
 const app = express();
+
+try {
+    const uri = 'mongodb://127.0.0.1:27017/magic-movies';
+    await mongoose.connect(uri);
+
+    console.log('DB Connected Successfully!')
+} catch (err) {
+    console.log('Cannot connect to DB');
+    console.error(err.message);
+}
 
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
