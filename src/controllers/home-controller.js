@@ -5,7 +5,7 @@ import movieService from '../services/movie-service.js';
 const homeController = Router();
 
 homeController.get('/', (req, res) => {
-    const movies = movieService.getAll();
+    const movies = movieService.getAll().lean();
 
     res.render('home', { movies });
 });
