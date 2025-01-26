@@ -23,9 +23,13 @@ const getAll = (filter = {}) => {
 const getOne = (movieId) => Movie.findById(movieId);
 
 const create = (movieData) => {
+    const result = Movie.create({
         ...movieData,
+        rating: Number(movieData.rating),
+        year: Number(movieData.year)
     });
 
+    return result;
 };
 
 export default {
