@@ -18,9 +18,11 @@ movieController.post('/create', async (req, res) => {
 
 movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
-    const movie = await movieService.getOne(movieId);
+    console.log(movieId);
+    
+    const movie = await movieService.getOne(movieId).lean();
 
-    res.render('details', { movie });
+    res.render('movie/details', { movie });
 });
 
 movieController.get('/search', async (req, res) => {
