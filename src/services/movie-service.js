@@ -1,7 +1,5 @@
 import Movie from '../models/Movie.js';
 
-import movies from "../movies.js";
-
 const getAll = (filter = {}) => {
     let query = Movie.find();
 
