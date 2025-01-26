@@ -4,20 +4,22 @@ import Movie from '../models/Movie.js';
 import movies from "../movies.js";
 
 const getAll = (filter = {}) => {
+    let query = Movie.find();
 
-    // if (filter.title) {
-    //     result = result.filter(movie => movie.title.toLowerCase().includes(filter.title.toLowerCase()));
-    // }
+    if (filter.title) {
+        //TODO: fix to case insensitive
+        query = query.find({ title: filter.search });
+    }
 
-    // if(filter.genre) {
-    //     result = result.filter(movie => movie.genre.toLowerCase().includes(filter.genre.toLowerCase()));
-    // }
+    if (filter.genre) {
+        query = query.find({ genre: filter.genre });
+    }
 
-    // if(filter.year) {
-    //     result = result.filter(movie => movie.year === filter.year)
-    // }
+    if (filter.year) {
+        query = query.find({ year: Number(filter.year) });
+    }
 
-    return Movie.find({});
+    return query;
 }
 const getOne = (movieId) => Movie.findById(movieId);
 
