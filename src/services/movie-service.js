@@ -18,7 +18,7 @@ const getAll = (filter = {}) => {
 
     return query;
 }
-const getOne = (movieId) => Movie.findById(movieId).populate('casts');
+const getOne = (movieId) => Movie.findById(movieId);
 
 const create = (movieData) => {
     const result = Movie.create({
