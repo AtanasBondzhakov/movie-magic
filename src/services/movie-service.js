@@ -31,10 +31,8 @@ const create = (movieData) => {
 };
 
 const attachCast = async (movieId, castId) => {
-    const movie = await Movie.findById(movieId);
-    movie.casts.push(castId);
-    await movie.save();
-}
+    return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
+};
 
 export default {
     getAll,
