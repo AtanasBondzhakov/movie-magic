@@ -18,7 +18,6 @@ movieController.post('/create', async (req, res) => {
 
 movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
-    console.log(movieId);
     
     const movie = await movieService.getOne(movieId).lean();
 
@@ -30,6 +29,10 @@ movieController.get('/search', async (req, res) => {
     const movies = await movieService.getAll(filter);
 
     res.render('search', { movies, filter });
+});
+
+movieController.get('/:movieId/attach-cast', (req, res) => {
+    res.render('movie/attach-cast');
 });
 
 export default movieController;
