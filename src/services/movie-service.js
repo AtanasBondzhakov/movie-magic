@@ -20,11 +20,12 @@ const getAll = (filter = {}) => {
 }
 const getOne = (movieId) => Movie.findById(movieId);
 
-const create = (movieData) => {
+const create = (movieData, ownerId) => {
     const result = Movie.create({
         ...movieData,
         rating: Number(movieData.rating),
-        year: Number(movieData.year)
+        year: Number(movieData.year),
+        owner: ownerId
     });
 
     return result;
