@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 
 import routes from './routes.js';
 import ratingHelper from './helpers/rating-helper.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.set('views', './src/views');
 
 app.use('/static', express.static('src/public'));
 app.use(urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(routes);
 
