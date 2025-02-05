@@ -31,16 +31,17 @@ const create = (movieData, ownerId) => {
     return result;
 };
 
-const attachCast = async (movieId, castId) => {
-    return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
-};
+const attachCast = async (movieId, castId) => Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
 
 const remove = (movieId) => Movie.findByIdAndDelete(movieId);
+
+const edit = (movieId, movieData) => Movie.findByIdAndUpdate(movieId, movieData);
 
 export default {
     getAll,
     getOne,
     create,
     attachCast,
-    remove
+    remove,
+    edit
 }
