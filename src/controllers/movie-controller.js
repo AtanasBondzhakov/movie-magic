@@ -22,7 +22,9 @@ movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId).lean().populate('casts');
 
-    res.render('movie/details', { movie });
+    const isOwner = movie.owner && movie.owner == req.user?.id;
+
+    res.render('movie/details', { movie, isOwner });
 });
 
 movieController.get('/search', async (req, res) => {
